@@ -24,10 +24,10 @@ public class ExerciseRestController {
     }
 
     @GetMapping("/exercises/{exerciseId}")
-    public Exercise getExercise(int theId){
-        Exercise theExercise = exerciseService.findById(theId);
+    public Exercise getExercise(@PathVariable int exerciseId){
+        Exercise theExercise = exerciseService.findById(exerciseId);
         if(theExercise == null){
-            throw new RuntimeException("Exercise id not found " + theId);
+            throw new RuntimeException("Exercise id not found " + exerciseId);
         }
 
         return theExercise;
@@ -47,12 +47,12 @@ public class ExerciseRestController {
     }
 
     @DeleteMapping("/exercise/{exerciseId}")
-    public String deleteExercise(int theId){
-        Exercise tempExercise = exerciseService.findById(theId);
+    public String deleteExercise(@PathVariable int exerciseId){
+        Exercise tempExercise = exerciseService.findById(exerciseId);
         if(tempExercise == null){
-            throw new RuntimeException("Exercise id not found - " + theId);
+            throw new RuntimeException("Exercise id not found - " + exerciseId);
         }
-        exerciseService.deleteById(theId);
-        return "Deleted exercise with id - " + theId;
+        exerciseService.deleteById(exerciseId);
+        return "Deleted exercise with id - " + exerciseId;
     }
 }

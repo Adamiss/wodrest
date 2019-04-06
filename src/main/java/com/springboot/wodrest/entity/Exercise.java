@@ -8,7 +8,7 @@ public class Exercise {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "exercise")
+    @Column(name = "id")
     private int id;
 
     @Column(name = "name")

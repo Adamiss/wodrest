@@ -1,13 +1,15 @@
 package com.springboot.wodrest.dao;
 
 import com.springboot.wodrest.entity.Exercise;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import java.util.List;
 
 @Repository
 public class ExerciseDAOImpl  implements ExerciseDAO{
@@ -25,7 +27,8 @@ public class ExerciseDAOImpl  implements ExerciseDAO{
 
         Session currentSession = entityManager.unwrap(Session.class);
 
-        Query <Exercise> theQuery = currentSession.createQuery("FROM Exercise");
+        // create a query
+        Query <Exercise> theQuery = currentSession.createQuery("from Exercise", Exercise.class);
 
         List<Exercise> exercises = theQuery.getResultList();
 
@@ -56,7 +59,7 @@ public class ExerciseDAOImpl  implements ExerciseDAO{
 
         Session currentSession = entityManager.unwrap(Session.class);
 
-        Query theQuery = currentSession.createQuery("delete from Exercise where id=:exerciseId");
+        Query theQuery = currentSession.createQuery("delete from Exercise where id= :exerciseId");
         theQuery.setParameter("exerciseId", theId);
 
         theQuery.executeUpdate();
