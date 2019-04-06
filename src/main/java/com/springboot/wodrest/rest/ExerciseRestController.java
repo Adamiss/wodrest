@@ -36,7 +36,10 @@ public class ExerciseRestController {
     @PostMapping("/exercises")
     public Exercise addExercise(@RequestBody Exercise theExercise){
         theExercise.setId(0);
+        System.out.println("==============>>> " + theExercise.getId());
         exerciseService.save(theExercise);
+        System.out.println("==============>>> " + theExercise.getId());
+
         return theExercise;
     }
 
