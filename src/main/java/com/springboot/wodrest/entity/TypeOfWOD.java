@@ -3,31 +3,29 @@ package com.springboot.wodrest.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "exercise")
-public class Exercise {
+@Table(name = "typeofwod")
+public class TypeOfWOD {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="id")
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int Id;
 
     @Column(name = "name")
     private String name;
 
-    // Define Constructors
-    public Exercise(){}
+    public TypeOfWOD(){}
 
-    public Exercise(String name) {
+    public TypeOfWOD(String name) {
         this.name = name;
     }
 
-    // Define getters / setters
     public int getId() {
-        return id;
+        return Id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        Id = id;
     }
 
     public String getName() {
@@ -38,13 +36,11 @@ public class Exercise {
         this.name = name;
     }
 
-    // Define toString method
     @Override
     public String toString() {
-        return "Exercise{" +
-                "id=" + id +
+        return "TypeOfWOD{" +
+                "Id=" + Id +
                 ", name='" + name + '\'' +
                 '}';
     }
-
 }
